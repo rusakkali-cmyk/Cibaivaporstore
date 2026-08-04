@@ -1,40 +1,17 @@
-// =========================
-// CIBAI VAPOR
-// script.js
-// =========================
-
-// LOADER
 window.addEventListener("load", () => {
 
-    const loader = document.getElementById("loader");
+    document.body.classList.add("loaded");
 
-    setTimeout(() => {
+    const loader = document.querySelector("#loader");
 
-        loader.style.opacity = "0";
+    if(loader){
 
-        loader.style.visibility = "hidden";
+        setTimeout(()=>{
 
-    }, 1800);
+            loader.style.opacity="0";
+            loader.style.visibility="hidden";
 
-});
-
-
-
-// NAVBAR EFFECT
-
-const header = document.querySelector("header");
-
-window.addEventListener("scroll", () => {
-
-    if (window.scrollY > 50) {
-
-        header.style.background = "rgba(0,0,0,.85)";
-        header.style.boxShadow = "0 10px 30px rgba(0,0,0,.5)";
-
-    } else {
-
-        header.style.background = "rgba(0,0,0,.45)";
-        header.style.boxShadow = "none";
+        },1200);
 
     }
 
@@ -42,183 +19,270 @@ window.addEventListener("scroll", () => {
 
 
 
-// SCROLL REVEAL
+const navbar=document.querySelector(".navbar");
 
-const reveal = document.querySelectorAll("section");
+window.addEventListener("scroll",()=>{
 
-function revealSection() {
+if(window.scrollY>80){
 
-    reveal.forEach((item) => {
+navbar.style.background="rgba(0,0,0,.88)";
+navbar.style.boxShadow="0 10px 30px rgba(0,0,0,.4)";
 
-        const top = item.getBoundingClientRect().top;
+}else{
 
-        if (top < window.innerHeight - 120) {
-
-            item.style.opacity = "1";
-            item.style.transform = "translateY(0px)";
-
-        }
-
-    });
+navbar.style.background="rgba(0,0,0,.35)";
+navbar.style.boxShadow="none";
 
 }
 
-reveal.forEach((item) => {
-
-    item.style.opacity = "0";
-    item.style.transform = "translateY(80px)";
-    item.style.transition = ".8s";
-
-});
-
-window.addEventListener("scroll", revealSection);
-
-revealSection();
-
-
-
-// PARALLAX HERO
-
-const hero = document.querySelector(".hero");
-
-window.addEventListener("scroll", () => {
-
-    let y = window.pageYOffset;
-
-    hero.style.backgroundPositionY = y * 0.5 + "px";
-
 });
 
 
 
-// PRODUCT HOVER
+const reveal=document.querySelectorAll("section");
 
-const cards = document.querySelectorAll(".product-card");
+function showSection(){
 
-cards.forEach((card) => {
+reveal.forEach(sec=>{
 
-    card.addEventListener("mouseenter", () => {
+const top=sec.getBoundingClientRect().top;
 
-        card.style.transform = "translateY(-12px) scale(1.03)";
+if(top<window.innerHeight-120){
 
-    });
+sec.classList.add("show");
 
-    card.addEventListener("mouseleave", () => {
-
-        card.style.transform = "translateY(0px) scale(1)";
-
-    });
+}
 
 });
 
+}
+
+window.addEventListener("scroll",showSection);
+
+showSection();
 
 
-// ABOUT CARD
 
-const about = document.querySelectorAll(".about-card");
 
-about.forEach((card) => {
+const products=[
 
-    card.addEventListener("mouseenter", () => {
+{
 
-        card.style.transform = "translateY(-10px)";
+name:"OXVA XLIM PRO",
 
-    });
+price:"Rp420.000",
 
-    card.addEventListener("mouseleave", () => {
+image:"product1.png"
 
-        card.style.transform = "translateY(0px)";
+},
 
-    });
+{
+
+name:"CALIBURN G4",
+
+price:"Rp390.000",
+
+image:"product2.png"
+
+},
+
+{
+
+name:"VAPORESSO XROS 5",
+
+price:"Rp455.000",
+
+image:"product3.png"
+
+},
+
+{
+
+name:"RELX INFINITY",
+
+price:"Rp350.000",
+
+image:"product4.png"
+
+},
+
+{
+
+name:"PREMIUM LIQUID",
+
+price:"Rp120.000",
+
+image:"product5.png"
+
+},
+
+{
+
+name:"COIL & POD",
+
+price:"Mulai Rp45.000",
+
+image:"product6.png"
+
+}
+
+];
+
+
+
+const list=document.getElementById("product-list");
+
+if(list){
+
+products.forEach(item=>{
+
+list.innerHTML+=`
+
+<div class="product-card">
+
+<img src="${item.image}" alt="${item.name}">
+
+<h3>${item.name}</h3>
+
+<span>${item.price}</span>
+
+<button>ORDER NOW</button>
+
+</div>
+
+`;
 
 });
 
-
-
-// BUTTON RIPPLE
-
-document.querySelectorAll("a").forEach(button=>{
-
-button.addEventListener("click",function(e){
-
-let x=e.clientX-this.offsetLeft;
-let y=e.clientY-this.offsetTop;
-
-let ripple=document.createElement("span");
-
-ripple.style.left=x+"px";
-ripple.style.top=y+"px";
-
-ripple.classList.add("ripple");
-
-this.appendChild(ripple);
-
-setTimeout(()=>{
-
-ripple.remove();
-
-},600);
-
-});
-
-});
+}
 
 
 
-// TITLE ANIMATION
+const heroLogo=document.querySelector(".hero-right img");
 
-const title = document.querySelector(".hero h1");
+if(heroLogo){
+
+let i=0;
 
 setInterval(()=>{
 
-title.style.textShadow="0 0 25px gold";
+i++;
 
-setTimeout(()=>{
-
-title.style.textShadow="none";
-
-},700);
-
-},2500);
-
-
-
-// FLOATING LOGO
-
-const logo=document.querySelector(".hero-logo");
-
-let move=0;
-
-setInterval(()=>{
-
-move++;
-
-logo.style.transform=`translateY(${Math.sin(move/8)*10}px)`;
+heroLogo.style.transform=`translateY(${Math.sin(i/12)*12}px)`;
 
 },20);
 
+}
 
 
-// GALLERY ZOOM
 
-document.querySelectorAll(".gallery img").forEach(img=>{
+document.querySelectorAll("button,.gold-btn,.btn-order").forEach(btn=>{
 
-img.addEventListener("mousemove",(e)=>{
+btn.addEventListener("mouseenter",()=>{
 
-img.style.transform="scale(1.08)";
-
-});
-
-img.addEventListener("mouseleave",()=>{
-
-img.style.transform="scale(1)";
+btn.style.transform="translateY(-4px)";
 
 });
 
+btn.addEventListener("mouseleave",()=>{
+
+btn.style.transform="translateY(0px)";
+
+});
+
 });
 
 
 
-// CONSOLE
 
-console.log("🔥 Welcome To CIBAI VAPOR");
+document.querySelectorAll(".gallery-item").forEach(item=>{
+
+item.addEventListener("mousemove",()=>{
+
+item.style.transform="scale(1.04)";
+
+});
+
+item.addEventListener("mouseleave",()=>{
+
+item.style.transform="scale(1)";
+
+});
+
+});
+
+
+
+const topBtn=document.createElement("div");
+
+topBtn.innerHTML="↑";
+
+topBtn.className="top-btn";
+
+document.body.appendChild(topBtn);
+
+topBtn.style.position="fixed";
+
+topBtn.style.right="30px";
+
+topBtn.style.bottom="100px";
+
+topBtn.style.width="55px";
+
+topBtn.style.height="55px";
+
+topBtn.style.borderRadius="50%";
+
+topBtn.style.background="#D4AF37";
+
+topBtn.style.color="#111";
+
+topBtn.style.display="flex";
+
+topBtn.style.justifyContent="center";
+
+topBtn.style.alignItems="center";
+
+topBtn.style.cursor="pointer";
+
+topBtn.style.fontWeight="bold";
+
+topBtn.style.fontSize="22px";
+
+topBtn.style.opacity="0";
+
+topBtn.style.transition=".3s";
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>500){
+
+topBtn.style.opacity="1";
+
+}else{
+
+topBtn.style.opacity="0";
+
+}
+
+});
+
+topBtn.onclick=()=>{
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+};
+
+
+
+// ===============================
+// Console
+// ===============================
+
+console.log("%c🔥 CIBAI VAPOR","font-size:25px;color:gold;");
