@@ -70,9 +70,9 @@ const products=[
 
 name:"OXVA XLIM PRO",
 
-price:"Rp420.000",
+price:"Mulai 20.000 LKR",
 
-image:"product1.png"
+image:"https://i.ibb.co/W4MyDjtM/image.png"
 
 },
 
@@ -80,9 +80,9 @@ image:"product1.png"
 
 name:"CALIBURN G4",
 
-price:"Rp390.000",
+price:"Mulai 20.000 LKR",
 
-image:"product2.png"
+image:"https://i.ibb.co/wNPRVGm9/image.png"
 
 },
 
@@ -90,9 +90,9 @@ image:"product2.png"
 
 name:"VAPORESSO XROS 5",
 
-price:"Rp455.000",
+price:"Mulai 20.000 LKR",
 
-image:"product3.png"
+image:"https://i.ibb.co/Pz3srjqt/image.png"
 
 },
 
@@ -100,29 +100,29 @@ image:"product3.png"
 
 name:"RELX INFINITY",
 
-price:"Rp350.000",
+price:"Mulai 20.000 LKR",
 
-image:"product4.png"
-
-},
-
-{
-
-name:"PREMIUM LIQUID",
-
-price:"Rp120.000",
-
-image:"product5.png"
+image:"https://i.ibb.co/Y7G1qZg6/image.png"
 
 },
 
 {
 
-name:"COIL & POD",
+name:"FOOM LIQUID",
 
-price:"Mulai Rp45.000",
+price:"Mulai 5.000 LKR",
 
-image:"product6.png"
+image:"https://i.ibb.co/chSbCXX0/image.png"
+
+},
+
+{
+
+name:"CATRIDGE",
+
+price:"Mulai 5.000 LKR",
+
+image:"https://i.ibb.co/xvB5hnv/image.png"
 
 }
 
