@@ -1,152 +1,80 @@
-window.addEventListener("load", () => {
+const menuBtn = document.getElementById("menuBtn");
+const menu = document.getElementById("menu");
 
-    document.body.classList.add("loaded");
+if (menuBtn && menu) {
+    menuBtn.addEventListener("click", () => {
+        menu.classList.toggle("open");
+    });
+}
 
-    const loader = document.querySelector("#loader");
+// NAVBAR SCROLL
+const navbar = document.querySelector(".navbar");
 
-    if(loader){
+window.addEventListener("scroll", () => {
 
-        setTimeout(()=>{
+    if(window.scrollY > 50){
 
-            loader.style.opacity="0";
-            loader.style.visibility="hidden";
+        navbar.style.background = "rgba(0,0,0,.9)";
 
-        },1200);
+    }else{
+
+        navbar.style.background = "rgba(0,0,0,.45)";
 
     }
 
 });
 
+// PRODUCT DATA
 
-
-const navbar=document.querySelector(".navbar");
-
-window.addEventListener("scroll",()=>{
-
-if(window.scrollY>80){
-
-navbar.style.background="rgba(0,0,0,.88)";
-navbar.style.boxShadow="0 10px 30px rgba(0,0,0,.4)";
-
-}else{
-
-navbar.style.background="rgba(0,0,0,.35)";
-navbar.style.boxShadow="none";
-
-}
-
-});
-
-
-
-const reveal=document.querySelectorAll("section");
-
-function showSection(){
-
-reveal.forEach(sec=>{
-
-const top=sec.getBoundingClientRect().top;
-
-if(top<window.innerHeight-120){
-
-sec.classList.add("show");
-
-}
-
-});
-
-}
-
-window.addEventListener("scroll",showSection);
-
-showSection();
-
-
-
-
-const products=[
+const products = [
 
 {
-
-name:"OXVA XLIM PRO",
-
-price:"Mulai 20.000 LKR",
-
-image:"https://i.ibb.co/W4MyDjtM/image.png"
-
+name:"OXVA XLIM PRO 2",
+price:"Rs 18,500",
+img:"https://placehold.co/500x500/111111/D4AF37?text=OXVA"
 },
 
 {
-
 name:"CALIBURN G4",
-
-price:"Mulai 20.000 LKR",
-
-image:"https://i.ibb.co/wNPRVGm9/image.png"
-
+price:"Rs 16,900",
+img:"https://placehold.co/500x500/111111/D4AF37?text=CALIBURN"
 },
 
 {
-
-name:"VAPORESSO XROS 5",
-
-price:"Mulai 20.000 LKR",
-
-image:"https://i.ibb.co/Pz3srjqt/image.png"
-
+name:"XROS 5",
+price:"Rs 19,900",
+img:"https://placehold.co/500x500/111111/D4AF37?text=XROS"
 },
 
 {
-
-name:"RELX INFINITY",
-
-price:"Mulai 20.000 LKR",
-
-image:"https://i.ibb.co/Y7G1qZg6/image.png"
-
-},
-
-{
-
-name:"FOOM LIQUID",
-
-price:"Mulai 5.000 LKR",
-
-image:"https://i.ibb.co/chSbCXX0/image.png"
-
-},
-
-{
-
-name:"CATRIDGE",
-
-price:"Mulai 5.000 LKR",
-
-image:"https://i.ibb.co/xvB5hnv/image.png"
-
+name:"PREMIUM LIQUID",
+price:"Mulai Rs 4,500",
+img:"https://placehold.co/500x500/111111/D4AF37?text=LIQUID"
 }
 
 ];
 
+const productList = document.getElementById("product-list");
 
+if(productList){
 
-const list=document.getElementById("product-list");
+products.forEach(product=>{
 
-if(list){
-
-products.forEach(item=>{
-
-list.innerHTML+=`
+productList.innerHTML += `
 
 <div class="product-card">
 
-<img src="${item.image}" alt="${item.name}">
+<img src="${product.img}" alt="${product.name}">
 
-<h3>${item.name}</h3>
+<h3>${product.name}</h3>
 
-<span>${item.price}</span>
+<span>${product.price}</span>
 
-<button>ORDER NOW</button>
+<a class="gold-btn" href="https://wa.me/94774386303">
+
+ORDER NOW
+
+</a>
 
 </div>
 
@@ -156,64 +84,33 @@ list.innerHTML+=`
 
 }
 
+// SCROLL ANIMATION
 
+const observer = new IntersectionObserver((entries)=>{
 
-const heroLogo=document.querySelector(".hero-right img");
+entries.forEach(entry=>{
 
-if(heroLogo){
+if(entry.isIntersecting){
 
-let i=0;
-
-setInterval(()=>{
-
-i++;
-
-heroLogo.style.transform=`translateY(${Math.sin(i/12)*12}px)`;
-
-},20);
+entry.target.classList.add("show");
 
 }
 
+});
 
+},{
+threshold:.15
+});
 
-document.querySelectorAll("button,.gold-btn,.btn-order").forEach(btn=>{
+document.querySelectorAll("section").forEach(section=>{
 
-btn.addEventListener("mouseenter",()=>{
-
-btn.style.transform="translateY(-4px)";
+observer.observe(section);
 
 });
 
-btn.addEventListener("mouseleave",()=>{
+// BACK TO TOP
 
-btn.style.transform="translateY(0px)";
-
-});
-
-});
-
-
-
-
-document.querySelectorAll(".gallery-item").forEach(item=>{
-
-item.addEventListener("mousemove",()=>{
-
-item.style.transform="scale(1.04)";
-
-});
-
-item.addEventListener("mouseleave",()=>{
-
-item.style.transform="scale(1)";
-
-});
-
-});
-
-
-
-const topBtn=document.createElement("div");
+const topBtn=document.createElement("button");
 
 topBtn.innerHTML="↑";
 
@@ -221,47 +118,33 @@ topBtn.className="top-btn";
 
 document.body.appendChild(topBtn);
 
-topBtn.style.position="fixed";
+topBtn.style.cssText=`
 
-topBtn.style.right="30px";
+position:fixed;
+right:25px;
+bottom:25px;
+width:50px;
+height:50px;
+border:none;
+border-radius:50%;
+background:#D4AF37;
+color:#111;
+font-size:22px;
+cursor:pointer;
+display:none;
+z-index:999;
 
-topBtn.style.bottom="100px";
-
-topBtn.style.width="55px";
-
-topBtn.style.height="55px";
-
-topBtn.style.borderRadius="50%";
-
-topBtn.style.background="#D4AF37";
-
-topBtn.style.color="#111";
-
-topBtn.style.display="flex";
-
-topBtn.style.justifyContent="center";
-
-topBtn.style.alignItems="center";
-
-topBtn.style.cursor="pointer";
-
-topBtn.style.fontWeight="bold";
-
-topBtn.style.fontSize="22px";
-
-topBtn.style.opacity="0";
-
-topBtn.style.transition=".3s";
+`;
 
 window.addEventListener("scroll",()=>{
 
 if(window.scrollY>500){
 
-topBtn.style.opacity="1";
+topBtn.style.display="block";
 
 }else{
 
-topBtn.style.opacity="0";
+topBtn.style.display="none";
 
 }
 
@@ -279,10 +162,4 @@ behavior:"smooth"
 
 };
 
-
-
-// ===============================
-// Console
-// ===============================
-
-console.log("%c🔥 CIBAI VAPOR","font-size:25px;color:gold;");
+console.log("🔥 CIBAI VAPOR READY");
