@@ -29,27 +29,27 @@ window.addEventListener("scroll", () => {
 const products = [
 
 {
-name:"OXVA XLIM PRO 2",
-price:"Rs 18,500",
-img:"https://placehold.co/500x500/111111/D4AF37?text=OXVA"
+name:"OXVA XLIM PRO",
+price:"Rs 20,000",
+img:"https://i.ibb.co/rfZRv0jc/image.png"
 },
 
 {
-name:"CALIBURN G4",
-price:"Rs 16,900",
-img:"https://placehold.co/500x500/111111/D4AF37?text=CALIBURN"
+name:"OXVA XLIM ULTRA",
+price:"Rs 22,000",
+img:"https://i.ibb.co/xSmDCy0Z/image.png"
 },
 
 {
-name:"XROS 5",
-price:"Rs 19,900",
-img:"https://placehold.co/500x500/111111/D4AF37?text=XROS"
+name:"PREMIUM CATRIDGE",
+price:"Mulai Rs 5,000",
+img:"https://i.ibb.co/hRNkvx0F/00057695-edcd-49ed-9b99-1dfbc5ae5a4c.png"
 },
 
 {
 name:"PREMIUM LIQUID",
-price:"Mulai Rs 4,500",
-img:"https://placehold.co/500x500/111111/D4AF37?text=LIQUID"
+price:"Mulai Rs 6,000",
+img:"https://i.ibb.co/HSn9ZB9/c78ee2c1-42fb-49eb-b505-966101f03099.png"
 }
 
 ];
