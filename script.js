@@ -162,4 +162,109 @@ behavior:"smooth"
 
 };
 
+const galleryGrid = document.querySelector(".gallery-grid");
+
+if (galleryGrid) {
+
+    fetch("gallery.json")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("gallery.json tidak ditemukan");
+            }
+
+            return response.json();
+        })
+
+        .then(data => {
+
+            galleryGrid.innerHTML = "";
+
+            data.gallery.forEach((item, index) => {
+
+                const galleryItem = document.createElement("div");
+
+                galleryItem.className = "gallery-item";
+
+                galleryItem.innerHTML = `
+                    <img
+                        src="${item.image}"
+                        alt="${item.title}"
+                        loading="lazy"
+                    >
+
+                    <div class="gallery-overlay">
+                        <span>${item.title}</span>
+                    </div>
+                `;
+
+                galleryItem.addEventListener("click", () => {
+                    openGallery(item.image, item.title);
+                });
+
+                galleryGrid.appendChild(galleryItem);
+
+            });
+
+        })
+
+        .catch(error => {
+
+            console.error("Gallery Error:", error);
+
+            galleryGrid.innerHTML = `
+                <p class="gallery-error">
+                    Gallery belum dapat dimuat.
+                </p>
+            `;
+
+        });
+
+}
+
+
+function openGallery(image, title) {
+
+    const viewer = document.createElement("div");
+
+    viewer.className = "gallery-viewer";
+
+    viewer.innerHTML = `
+        <button class="gallery-close">×</button>
+
+        <div class="gallery-viewer-content">
+
+            <img src="${image}" alt="${title}">
+
+            <h3>${title}</h3>
+
+        </div>
+    `;
+
+    document.body.appendChild(viewer);
+
+    document.body.style.overflow = "hidden";
+
+    viewer.querySelector(".gallery-close").onclick = () => {
+
+        viewer.remove();
+
+        document.body.style.overflow = "";
+
+    };
+
+    viewer.addEventListener("click", (event) => {
+
+        if (event.target === viewer) {
+
+            viewer.remove();
+
+            document.body.style.overflow = "";
+
+        }
+
+    });
+
+}
+
 console.log("🔥 CIBAI VAPOR READY");
+
