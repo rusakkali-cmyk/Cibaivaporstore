@@ -280,25 +280,17 @@ if (bgMusic) {
         bgMusic.play()
             .then(() => {
                 musicStarted = true;
-                console.log("🎵 CIBAI VAPOR MUSIC STARTED");
+                console.log("🎵 Music started");
             })
             .catch(error => {
-                console.log("Music belum bisa dimainkan:", error);
+                console.log("Music gagal dimainkan:", error);
             });
-
     }
 
-    // Klik pertama di mana saja
-    document.addEventListener("click", startMusic, {
-        once: true
-    });
-
-    // Tap pertama di HP
-    document.addEventListener("touchstart", startMusic, {
-        once: true
-    });
-
+    document.addEventListener("click", startMusic, { once: true });
+    document.addEventListener("touchstart", startMusic, { once: true });
 }
+
 
 console.log("🔥 CIBAI VAPOR READY");
 
