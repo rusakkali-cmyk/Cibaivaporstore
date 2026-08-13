@@ -265,6 +265,40 @@ function openGallery(image, title) {
     });
 
 }
+const bgMusic = document.getElementById("bgMusic");
+
+if (bgMusic) {
+
+    bgMusic.volume = 0.35;
+
+    let musicStarted = false;
+
+    function startMusic() {
+
+        if (musicStarted) return;
+
+        bgMusic.play()
+            .then(() => {
+                musicStarted = true;
+                console.log("🎵 CIBAI VAPOR MUSIC STARTED");
+            })
+            .catch(error => {
+                console.log("Music belum bisa dimainkan:", error);
+            });
+
+    }
+
+    // Klik pertama di mana saja
+    document.addEventListener("click", startMusic, {
+        once: true
+    });
+
+    // Tap pertama di HP
+    document.addEventListener("touchstart", startMusic, {
+        once: true
+    });
+
+}
 
 console.log("🔥 CIBAI VAPOR READY");
 
