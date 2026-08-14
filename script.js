@@ -290,7 +290,17 @@ if (bgMusic) {
     document.addEventListener("click", startMusic, { once: true });
     document.addEventListener("touchstart", startMusic, { once: true });
 }
+window.addEventListener("load", () => {
 
+    const loader = document.getElementById("loader");
+
+    if (!loader) return;
+
+    setTimeout(() => {
+        loader.classList.add("hide");
+    }, 1200);
+
+});
 
 console.log("🔥 CIBAI VAPOR READY");
 
