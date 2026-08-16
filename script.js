@@ -39,6 +39,18 @@ name:"OXVA XLIM ULTRA",
 price:"Rs 22,000",
 img:"https://i.ibb.co/xSmDCy0Z/image.png"
 },
+    
+{
+name:"FOOM X SWITCH SERIES",
+price:"Rs 20,000",
+img:"https://i.ibb.co/pkn6hX6/image.png"
+},
+
+{
+name:"FOOM X SIGNATURE SERIES",
+price:"Rs 22,000",
+img:"https://i.ibb.co/TM5Qpx6b/image.png"
+},
 
 {
 name:"PREMIUM CATRIDGE",
